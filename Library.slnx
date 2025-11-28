@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Library.Common/Library.Common.csproj" />
+  <Project Path="Library.DTO/Library.DTO.csproj" Id="5fe7b9a3-0d08-44d2-9278-69519b59f964" />
+  <Project Path="Library.IService/Library.IService.csproj" />
+  <Project Path="Library.Model/Library.Model.csproj" />
+  <Project Path="Library.Service/Library.Service.csproj" />
+  <Project Path="Library.UI/Library.UI.csproj" />
+  <Project Path="Library.WebAPI/Library.WebAPI.csproj" />
+  <Project Path="LibraryAPI.Common/LibraryAPI.Common.csproj" />
+</Solution>
