@@ -2,7 +2,7 @@
 <h3 align="center">图书管理：客户端不碰数据库，全部走接口</h3>
 
 <p align="center">
-  <img src="docs/banner.svg" alt="LibraryManagermentSystem" width="900" />
+  <img src="docs/banner.svg?v=2" alt="LibraryManagermentSystem" width="900" />
 </p>
 
 <p align="center">
