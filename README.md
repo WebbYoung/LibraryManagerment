@@ -1,6 +1,40 @@
-# LibraryManagermentSystem · 图书管理系统
+<h1 align="center">LibraryManagermentSystem</h1>
+<h3 align="center">图书管理：客户端不碰数据库，全部走接口</h3>
 
-WinForms 桌面客户端 + ASP.NET Core Web API 的图书管理 Demo。客户端不直连数据库，所有数据都走 HTTP 接口 —— 这也是这个仓库和早期「UI 直接连库」写法的分水岭。
+<p align="center">
+  <img src="docs/banner.svg" alt="LibraryManagermentSystem" width="900" />
+</p>
+
+<p align="center">
+  <img alt=".NET" src="https://img.shields.io/badge/.NET-8-512BD4" />
+  <img alt="Desktop" src="https://img.shields.io/badge/desktop-WinForms-7C4DFF" />
+  <img alt="Database" src="https://img.shields.io/badge/database-SQL%20Server-CC2927" />
+  <a href="https://github.com/WebbYoung/LibraryManagermentSystem/commits/master"><img alt="Last commit" src="https://img.shields.io/github/last-commit/WebbYoung/LibraryManagermentSystem" /></a>
+</p>
+
+---
+
+书籍与分类的增删改查、封面图上传、手机号加图形验证码登录。一个 WinForms 客户端 + 一个 ASP.NET Core 8 Web API，中间隔着一层 HTTP —— 客户端不碰数据库，所有数据都从接口拿。这也正是这个仓库和「UI 直接连库」那种写法的分水岭。
+
+重点其实是分层：`UI → WebAPI → IService → Service → EF Core`，DTO 隔离传输结构，`Common` 放跨层工具。和同作者 [`DriverExam`](https://github.com/WebbYoung/DriverExam) 的桌面端（LoginDal / UserDal 直连 MySQL）摆在一起看，是两种取舍。
+
+密码用的是 `MD5(salt + password)`，教学够用、生产不够；要对照更规范的做法，看同作者的 [`AuthAPI`](https://github.com/WebbYoung/AuthAPI)，那里是 PBKDF2 加 16 字节随机盐。
+
+---
+
+**想先把系统跑起来？**<br />
+服务端 + 客户端两步，见[运行](#运行)。注意客户端把地址写死成了 `https://localhost:7220`，服务端要跑在这个端口。
+
+**想换数据库？**<br />
+连接串在 `Library.Service/LibContext.cs` 里，目前是硬编码，换机器要改代码（见[已知问题](#已知问题)第 1 条）。
+
+**想找某个接口？**<br />
+[接口一览](#接口一览)16 个，鉴权走 Session Cookie，需要登录的方法标 `[Authorized]`。
+
+**想对比另一种密码存储？**<br />
+[`AuthAPI`](https://github.com/WebbYoung/AuthAPI) 用 PBKDF2 + 16 字节随机盐，两者可以对着读。
+
+---
 
 ## 目录结构
 
